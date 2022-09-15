@@ -6,43 +6,37 @@ import "@openzeppelin/contracts@4.7.3/access/Ownable.sol";
 import "@openzeppelin/contracts@4.7.3/utils/Counters.sol";
 
 
-contract KryptoCampBlindBoxNft is ERC721, Ownable {
+contract NTUFintechClubExpoNFT111_1 is ERC721, Ownable {
     using Counters for Counters.Counter;
     using Strings for uint256;
 
     Counters.Counter private _tokenIdCounter;
 
-    // 盲盒
     bool private revealed = false;
     uint256 public mintPrice = 3000 wei;
-    uint8 public maxMint = 4;
+    uint8 public maxSupply = 200;
 
-    // 未解盲 json
     string private notRevealedURI = "";
-    // 解盲 json
     string private baseURI = "";
 
-    constructor(string memory _notRevealedURI, string memory _baseURI) ERC721("KryptoCampBlindBoxNft", "KC") {
-        // https://gateway.pinata.cloud/ipfs/QmR8FizTQTayDHSxHYkFEzaWXhJm2kNL74r5skayZojcYR
+    constructor(string memory _notRevealedURI, string memory _baseURI) ERC721("NTUFintechClubExpoNFT111-1", "NTUFC-EXPO-111") {
+        // https://gateway.pinata.cloud/ipfs/QmR8FizTQTayDHSxHYkFEzaWXhJm2kNL74r5skayZojcYR/
+        // https://ipfs.moralis.io:2053/ipfs/Qma2AY1NNAxywYn8CP6Kapibchxhbfz2PnUNHJxq4A7HFS/111-1NTUFC/EXPO/images/mysteryBox/metadata/mysteryBox
         notRevealedURI = _notRevealedURI;
         // https://gateway.pinata.cloud/ipfs/QmZq9e87AHiWLq9J6fF3cVd7kgFwtvgkHndsXhYnGGxQfx/
+        // https://ipfs.moralis.io:2053/ipfs/Qme1cMxpjy8gJtdb65yqwut9hZhTZDSp49Teb3HtrLnQw1/111-1NTUFC/EXPO/metadata/
         baseURI = _baseURI;
     }
-    
-    function safeMint(address to) internal {
+   
+    function airdropNFT(address to) public payable {
+        require(msg.value >= mintPrice, "Insufficeient balance!");
+        require(_tokenIdCounter.current() <= maxSupply, "Exceed max supply of NFT");
+
         uint256 tokenId = _tokenIdCounter.current();
         _tokenIdCounter.increment();
         _safeMint(to, tokenId);
     }
 
-    function mintNFT() public payable {
-        require(msg.value >= mintPrice, "Insufficeient balance!");
-        require(_tokenIdCounter.current() <= maxMint, "only sale 5 nft!! sorry");
-
-        safeMint(msg.sender);
-    }
-
-    // 切換盲盒開關
     function switchRevealed(bool _status) external onlyOwner {
         revealed = _status;   
     }
@@ -50,7 +44,6 @@ contract KryptoCampBlindBoxNft is ERC721, Ownable {
     function tokenURI(uint256 tokenId) public view virtual override returns (string memory) {
         _requireMinted(tokenId);
 
-        // 若 revealed 是 false，tokenURI 設定尚未開盲盒的 json
         if (!revealed) {
             return notRevealedURI;
         }

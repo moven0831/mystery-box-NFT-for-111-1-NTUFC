@@ -6,3 +6,10 @@ out/
 !/broadcast
 /broadcast/*
 /broadcast/*/31337/
+
+
+# Ignore node_modules
+ipfs/node_modules/
+ipfs/yarn.lock
+ipfs/.env
+*.jpg
