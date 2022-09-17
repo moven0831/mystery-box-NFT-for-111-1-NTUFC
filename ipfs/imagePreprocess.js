@@ -2,7 +2,7 @@ const fs = require('fs');
 
 const toDirPath = 'imageDB';
 const fromDirPath = 'imageToCut';
-const sourcePrefix = 'test_';
+const sourcePrefix = 'ntunft_';
 const sourceAmount = 3;
 const limit = [192, 5, 3];
 const genAmount = 200;
@@ -30,6 +30,10 @@ function getAllIndexes(arr, val) {
     return indexes;
 }
 
+// function getMaxIndex(indexes) {
+//     return max
+// }
+
 function randomChoice(p) {
     let rnd = p.reduce( (a, b) => a + b ) * Math.random();
     return p.findIndex( a => (rnd -= a) < 0 );
@@ -47,7 +51,12 @@ const probs = [
 let randomResult = [0, 0, 0];
 
 // make sure there's only exact amount of limit[1] & limit[2]
-while (randomResult.count(1) != limit[1] || randomResult.count(2) != limit[2]) {
+while (
+        randomResult.count(1) != limit[1] || 
+        randomResult.count(2) != limit[2] ||
+        getAllIndexes(randomResult, 1)[4] >= 100 ||
+        getAllIndexes(randomResult, 2)[2] >= 100
+        ){
     randomResult = randomChoices([
         calculateProb(0),
         calculateProb(1),

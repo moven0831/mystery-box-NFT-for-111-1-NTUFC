@@ -6,18 +6,35 @@ let ipfsArray = [];
 let promises = [];
 
 let imageAmount = 200;
-let imageIpfsID = 'QmWPwd4qbKtL4VJLyJiZpS3jk64bvRPTB3wcGJF8XTRf8x';
-let imageIpfsDirPath = '111-1NTUFC/EXPO';
+let imageIpfsID = 'QmeZbrgQ24bzF8mY2KLP3293CVMSbqtjqkmDtXhiKuUbzb';
+// let imageIpfsDirPath = '111-1NTUFC/EXPO';
 
 const zeroPad = (num, places) => String(num).padStart(places, '0');
 
 for (let i = 0; i < imageAmount; i++) {
     ipfsArray.push({
-        path: `${imageIpfsDirPath}/metadata/${i}.json`,
+        path: `${i}.json`,
         content: {
-            image: `ipfs://${imageIpfsID}/${imageIpfsDirPath}/images/${i}.jpg`,
-            name: `[Test 1] 111-1NTUFC EXPO NFT #${i}`,
-            description: "presented on 09162022"
+            image: `ipfs://${imageIpfsID}/${i}.jpg`,
+            name: `[NTU EXPO 111] NTUFC NFT #${i}`,
+            description: "Proof of attendance for 111-1 NTUFC EXPO. Also can be used as a voucher for discounts or gifts.",
+            external_url: "https://www.facebook.com/NTUFRC",
+            attributes: [
+                {
+                    "trait_type": "Club", 
+                    "value": "NTU FinTech Club"
+                },
+                {
+                  "display_type": "boost_percentage", 
+                  "trait_type": "GPA Boost", 
+                  "value": 100
+                }, 
+                {
+                  "display_type": "number", 
+                  "trait_type": "Generation of NTUFC", 
+                  "value": 4
+                }
+              ]
         }
     })
 }

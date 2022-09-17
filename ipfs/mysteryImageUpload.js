@@ -6,8 +6,8 @@ let ipfsArray = [];
 let promises = [];
 
 let imageDirPath = 'imageToCut';
-let mysteryBox = 'test_box';
-let ipfsDirPath = '111-1NTUFC/EXPO/images/mysteryBox';
+let mysteryBox = 'Mystery_Box';
+// let ipfsDirPath = '111-1NTUFC/EXPO/images/mysteryBox';
 
 const zeroPad = (num, places) => String(num).padStart(places, '0');
 
@@ -16,7 +16,7 @@ promises.push(new Promise((res, rej) => {
     fs.readFile(`${__dirname}/${imageDirPath}/${mysteryBox}.jpg`, (err, data) => {
         if(err) rej();
         ipfsArray.push({
-            path: `${ipfsDirPath}`,
+            path: "mystery_box.jpg",
             content: data.toString("base64")
         })
         res();

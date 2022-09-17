@@ -18,14 +18,8 @@ contract NTUFintechClubExpoNFT111_1 is ERC721, Ownable {
     string private notRevealedURI = "";
     string private baseURI = "";
 
-    constructor(string memory _notRevealedURI, string memory _baseURI) ERC721("NTUFintechClubExpoNFT111-1", "NTUFC-EXPO-111") {
-        // https://gateway.pinata.cloud/ipfs/QmR8FizTQTayDHSxHYkFEzaWXhJm2kNL74r5skayZojcYR
-        // https://ipfs.moralis.io:2053/ipfs/Qma2AY1NNAxywYn8CP6Kapibchxhbfz2PnUNHJxq4A7HFS/111-1NTUFC/EXPO/images/mysteryBox/metadata/mysteryBox
-        // https://ipfs.moralis.io:2053/ipfs/QmaHnLTCKuSjkUdhWi4TMYm52t3FnD5WfEkJsbjMJbyYnE
+    constructor(string memory _notRevealedURI, string memory _baseURI) ERC721("111-1 NTU FinTech Club Expo NFT", "NTUFC-EXPO-111") {
         notRevealedURI = _notRevealedURI;
-        // https://gateway.pinata.cloud/ipfs/QmZq9e87AHiWLq9J6fF3cVd7kgFwtvgkHndsXhYnGGxQfx/
-        // https://ipfs.moralis.io:2053/ipfs/Qme1cMxpjy8gJtdb65yqwut9hZhTZDSp49Teb3HtrLnQw1/111-1NTUFC/EXPO/metadata/
-        // https://ipfs.moralis.io:2053/ipfs/QmPnDuxFFgHT9suoKmtHf5ygRCwW3cb5satYXSofCNLxBh/
         baseURI = _baseURI;
     }
    
