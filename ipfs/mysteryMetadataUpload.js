@@ -5,7 +5,6 @@ let axios = require("axios");
 let ipfsArray = [];
 let promises = [];
 
-let imageAmount = 200;
 let imageIpfsID = 'QmdQqQoUViNMpAVp7smYJjeZ7Jz691W5Ph7vegXes4oVmJ';
 // let imageIpfsDirPath = '111-1NTUFC/EXPO/images/mysteryBox';
 

@@ -5,7 +5,7 @@ let axios = require("axios");
 let ipfsArray = [];
 let promises = [];
 
-let imageAmount = 200;
+let imageAmount = 100;
 let imageDirPath = 'imageDB';
 // let ipfsDirPath = '111-1NTUFC/EXPO/images';
 
@@ -43,6 +43,3 @@ Promise.all(promises).then( () => {
         console.log(error)
     })
 })
-
-
-// https://ipfs.moralis.io:2053/ipfs/QmWPwd4qbKtL4VJLyJiZpS3jk64bvRPTB3wcGJF8XTRf8x/111-1NTUFC/EXPO/images/102.jpg

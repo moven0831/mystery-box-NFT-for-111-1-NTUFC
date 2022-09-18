@@ -4,8 +4,8 @@ const toDirPath = 'imageDB';
 const fromDirPath = 'imageToCut';
 const sourcePrefix = 'ntunft_';
 const sourceAmount = 3;
-const limit = [192, 5, 3];
-const genAmount = 200;
+const limit = [84, 15, 1];
+const genAmount = 100;
 
 let curLimit = [0, 0, 0];
 let random;
@@ -54,8 +54,9 @@ let randomResult = [0, 0, 0];
 while (
         randomResult.count(1) != limit[1] || 
         randomResult.count(2) != limit[2] ||
-        getAllIndexes(randomResult, 1)[4] >= 100 ||
-        getAllIndexes(randomResult, 2)[2] >= 100
+        getAllIndexes(randomResult, 1)[0] <= 8 ||
+        getAllIndexes(randomResult, 1)[7] >= 50 ||
+        getAllIndexes(randomResult, 2)[0] >= 30
         ){
     randomResult = randomChoices([
         calculateProb(0),

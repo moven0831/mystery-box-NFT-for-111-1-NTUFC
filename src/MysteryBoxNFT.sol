@@ -6,19 +6,19 @@ import "@openzeppelin/contracts@4.7.3/access/Ownable.sol";
 import "@openzeppelin/contracts@4.7.3/utils/Counters.sol";
 
 
-contract NTUFintechClubExpoNFT111_1 is ERC721, Ownable {
+contract NTUFintechClubExpoPOAP111_1 is ERC721, Ownable {
     using Counters for Counters.Counter;
     using Strings for uint256;
 
     Counters.Counter private _tokenIdCounter;
 
     bool public revealed = false;
-    uint8 public maxSupply = 200;
+    uint8 public maxSupply = 100;
 
     string private notRevealedURI = "";
     string private baseURI = "";
 
-    constructor(string memory _notRevealedURI, string memory _baseURI) ERC721("111-1 NTU FinTech Club Expo NFT", "NTUFC-EXPO-111") {
+    constructor(string memory _notRevealedURI, string memory _baseURI) ERC721("111-1 NTU FinTech Club Expo POAP", "NTUFC-EXPO-POAP-111") {
         notRevealedURI = _notRevealedURI;
         baseURI = _baseURI;
     }
